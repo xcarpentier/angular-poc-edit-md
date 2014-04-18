@@ -1,0 +1,52 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Home</a></li>
+        <li><a ng-href="#">About</a></li>
+        <li><a ng-href="#">Contact</a></li>
+    </ul>
+    <h3 class="text-muted">proto jo</h3>
+</div>
+
+<div class="row well" ng-model="editorBox">
+
+
+    <div class="row bg-info">
+
+        <h3>TODOList MVP</h3>
+
+        <ul ng-repeat="item in ['markdown editor -> OK','upload file / save image -> OK', 'save on local storage -> OK']">
+            <li>{{item | uppercase | lowercase}}</li>
+        </ul>
+    </div>
+
+
+    <div class="row bg-success">
+        <textarea cols="30" rows="10" ng-show="editorBox.editing" ng-model="content"></textarea>
+        <div class="container" btf-markdown="content" ng-show="!editorBox.editing">
+        </div>
+        <div class="btn-group">
+            <button class="btn glyphicon glyphicon-floppy-open" ng-click="editorBox.editing = !editorBox.editing">
+            </button>
+            <button class="btn btn-success glyphicon glyphicon-floppy-save" ng-click="save(content)">
+            </button>
+            <button class="btn btn-danger glyphicon glyphicon-floppy-remove"
+                    ng-click="remove();content=''">
+            </button>
+        </div>
+    </div>
+
+
+    <div class="row bg-warning">
+        <form>
+            <input type="file" ng-file-select="onFileSelect($files)" >
+        </form>
+        <img class="up-img" ng-src="{{image}}" alt="" ng-show="image"/>
+    </div>
+
+
+
+</div>
+
+<div class="footer">
+    <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+</div>
